@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totally Real Game</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111;
+        font-family: Arial, sans-serif;
+    }
+
+    .game {
+        width: 900px;
+        max-width: 92%;
+        aspect-ratio: 16 / 9;
+        background:
+            linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.65)),
+            radial-gradient(circle at 50% 35%, #4c7a9e, #172534 70%);
+        border: 5px solid #333;
+        border-radius: 18px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 40px #000;
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 25px;
+        color: white;
+        font-weight: bold;
+        text-shadow: 2px 2px #000;
+    }
+
+    .title {
+        position: absolute;
+        top: 18%;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: clamp(35px, 7vw, 75px);
+        font-weight: 900;
+        letter-spacing: 5px;
+        text-shadow: 5px 5px 0 #000;
+    }
+
+    .subtitle {
+        position: absolute;
+        top: 32%;
+        width: 100%;
+        text-align: center;
+        color: #ddd;
+        font-size: 18px;
+    }
+
+    .menu {
+        position: absolute;
+        top: 43%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    button {
+        height: 58px;
+        border: 3px solid #111;
+        border-radius: 10px;
+        background: linear-gradient(#f5f5f5, #aaa);
+        color: #111;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 5px 0 #111;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(#fff, #ccc);
+    }
+
+    button:active {
+        transform: translateY(4px);
+        box-shadow: 0 1px 0 #111;
+    }
+
+    .version {
+        position: absolute;
+        bottom: 12px;
+        right: 18px;
+        color: #aaa;
+        font-size: 12px;
+    }
+
+    .message {
+        position: absolute;
+        inset: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,.8);
+        color: white;
+        text-align: center;
+        z-index: 10;
+    }
+
+    .message-box {
+        background: #222;
+        border: 3px solid white;
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 400px;
+    }
+
+    .message h2 {
+        margin-top: 0;
+    }
+
+    .close {
+        margin-top: 15px;
+        width: 130px;
+        height: 45px;
+        font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <div class="top">
+        <span>☰ MENU</span>
+        <span>⚙ SETTINGS</span>
+    </div>
+
+    <div class="title">VOID RUNNER</div>
+
+    <div class="subtitle">
+        The totally real game that definitely exists
+    </div>
+
+    <div class="menu">
+        <button id="play">▶ PLAY</button>
+        <button id="settings">⚙ SETTINGS</button>
+        <button id="credits">★ CREDITS</button>
+        <button id="quit">✕ QUIT</button>
+    </div>
+
+    <div class="version">
+        v1.0.0 • Definitely Not A Troll
+    </div>
+
+    <div class="message" id="message">
+        <div class="message-box">
+            <h2 id="messageTitle">ERROR</h2>
+            <p id="messageText"></p>
+            <button class="close" id="close">OK</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const message = document.getElementById("message");
+const title = document.getElementById("messageTitle");
+const text = document.getElementById("messageText");
+
+function showMessage(t, m) {
+    title.textContent = t;
+    text.textContent = m;
+    message.style.display = "flex";
+}
+
+/* PLAY */
+
+document.getElementById("play").addEventListener("click", () => {
+
+    showMessage(
+        "🎮 PLAY",
+        "Loading game... 99%..."
+    );
+
+    setTimeout(() => {
+        text.textContent = "Loading game... 99%...";
+    }, 1200);
+
+});
+
+
+/* SETTINGS */
+
+document.getElementById("settings").addEventListener("click", () => {
+
+    showMessage(
+        "⚙ SETTINGS",
+        "There are no settings. You have been deceived."
+    );
+
+});
+
+
+/* CREDITS */
+
+document.getElementById("credits").addEventListener("click", () => {
+
+    showMessage(
+        "★ CREDITS",
+        "Created by absolutely nobody. Special thanks to you for clicking this."
+    );
+
+});
+
+
+/* QUIT */
+
+document.getElementById("quit").addEventListener("click", () => {
+
+    showMessage(
+        "✕ QUIT",
+        "Nice try. You are not escaping."
+    );
+
+});
+
+
+/* CLOSE */
+
+document.getElementById("close").addEventListener("click", () => {
+
+    message.style.display = "none";
+
+});
+
+</script>
+
+</body>
+</html>
